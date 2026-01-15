@@ -1,0 +1,179 @@
+.month-container {
+    width:100%;
+    height:100%;
+    justify-content: center;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.month-header {
+    height:70px;
+    border: 2px solid black;
+    background-color: rgb(175, 155, 113);
+    border-radius: 12PX;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+
+.month-header .arrow {
+    padding-right: 24px;
+    padding-left: 24px;
+    cursor:pointer;
+}
+
+.month-header .title {
+    min-width:30%;
+    user-select: none;
+    color:black;
+    font-weight: bolder;
+}
+
+.month-header .title select {
+    font-size: 32px;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    background-color: rgb(175, 155, 113);
+    appearance: none;
+    cursor: pointer;
+}
+
+.month-header .title select:focus {
+    outline: none;
+}
+
+.day-names {
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+}
+
+.day-names .day-name {
+    background-color: rgb(187, 89, 33);
+    width:14.28%;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 4px;
+}
+
+.week-row {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    direction: rtl;
+}
+
+.day {
+    background-color: rgb(231, 135, 26);
+    width:14.28%;
+    height:110px;
+    border-radius: 8px;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.day label {
+    cursor: pointer;
+}
+
+.disable {
+    background-color: grey;
+}
+
+.enable {
+}
+
+.today {
+    background-color: #58a551;
+}
+
+.day-half-area {
+    width:100%;
+    height:40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding:8px;
+    gap: 12px;
+}
+
+.day-half-area .greg-date {
+    font-size: 36px;
+}
+
+.day-half-area .heb-date {
+    font-weight: bold;
+    font-size: 16px;
+    direction: rtl;
+}
+
+.events-half-area {
+    width:100%;
+    height:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    direction: rtl;
+    overflow: hidden;
+    color:black;
+    text-align: right;
+    margin:4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.events-half-area label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ************** MOBILE ********************************* */
+
+@media (max-width: 768px) {
+    .month-container {
+        margin: 2px;
+    }
+
+    .month-header .title {
+        min-width:70%;
+    }
+
+    .day-half-area {
+        padding-top:0;
+        flex-direction: column;
+        gap:unset;
+        height:unset;
+        overflow-y: hidden;
+    }
+
+    .day-half-area .greg-date {
+        font-size: 16px;
+    }
+
+    .day-half-area .heb-date {
+        font-size: 10px;
+        font-weight: unset;
+    }
+
+    .events-half-area {
+        font-size: 8px;
+        padding: 2px;
+        font-weight: unset;
+    }
+
+    .month-header .title select {
+        font-size: 24px;
+    }
+
+    .month-header .title select option {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,20 @@
+.open-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.open-wrapper .img-wrapper {
+    width: 80vw;
+    height: auto;
+    max-height: 100vh;
+}
+
+.open-wrapper .img-wrapper img {
+    border: 4px solid black;
+    border-radius: 24px;
+    box-shadow: 0 0 20px rgba(255,255,255,1);
+    max-width: 100%;
+}

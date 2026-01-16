@@ -95,6 +95,7 @@
 .add-event .description {
     width: 100%;
     display:flex;
+    gap: 8px;
     align-items: center;
     justify-content: space-between;
     padding: 0 12px 0 12px;
@@ -178,7 +179,7 @@
 @media (max-width: 768px) {   
     .events-wrapper .events {
         width: 90%;
-        height:60%;
+        height:90%;
     }
 
     .events-table table .description {    
@@ -191,7 +192,7 @@
 
     .add-event .options label {
         font-size: 14px;
-        margin:8px;
+        margin:4px;
     }
 
     .events-table {
@@ -203,7 +204,7 @@
     }
 
     .event-date {
-        gap: 2px;
+        gap: 4px;
     }
 }
 

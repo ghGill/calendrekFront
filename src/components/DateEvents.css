@@ -175,8 +175,8 @@
 
 /* ************** MOBILE ********************************* */
 
-@media (max-width: 768px) {
-    .events {
+@media (max-width: 768px) {   
+    .events-wrapper .events {
         width: 90%;
         height:60%;
     }

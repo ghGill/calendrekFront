@@ -21,7 +21,7 @@
 
 .events-wrapper .events {
     width: 50%;
-    height: 55%;
+    height: 65%;
     background-color: rgb(187, 112, 41);
     border: 4px solid white;
     border-radius: 12px;
@@ -65,7 +65,7 @@
     border: 4px solid black;
     border-radius: 8px;
     background-color: rgb(224, 174, 109);
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
@@ -73,7 +73,6 @@
     padding-right: 12px;
     user-select: none;
     text-align: right;
-    white-space: nowrap;
 }
 
 .events-table table .delete {
@@ -182,10 +181,6 @@
         height:90%;
     }
 
-    .events-table table .description {    
-        font-size: 14px;
-    }
-
     .add-event input {
         width: 70%;
     }
@@ -197,6 +192,13 @@
 
     .events-table {
         font-size: 20px;
+        /* overflow-x: auto;
+        overflow-y: auto; */
+    }
+
+    .events-table table .description {    
+        font-size: 14px;
+        /* white-space: normal; */
     }
 
     .event-date select {

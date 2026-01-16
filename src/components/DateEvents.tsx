@@ -166,125 +166,130 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
     const addEventSelects:any = dm.getAddEventDatesList();
 
     return (
-        <div className='events-wrapper'>
-            <div className="events-bg"></div>
-            <div className="events">
-                {
-                    showConfirm &&
-                    <Confirm 
-                        text={confirmParams.current.text}
-                        callback={deleteEvent}
-                    >
-                    </Confirm>
-                }
+        <>
+            {
+                (events.length > 0) &&
+                <div className='events-wrapper'>
+                    <div className="events-bg"></div>
+                    <div className="events">
+                        {
+                            showConfirm &&
+                            <Confirm 
+                                text={confirmParams.current.text}
+                                callback={deleteEvent}
+                            >
+                            </Confirm>
+                        }
 
-                <div className='close'>
-                    <span onClick={() => {closeHandler()}}>X</span>
-                </div>
-                <div className='title'>
-                    <label>{dateParams.hTitle}</label>
-                    <label>{dateParams.gTitle}</label>
-                </div>
-                <div className="events-table">
-                    <table>
-                        <tbody>
-                            {
-                                events.map((evnt:any, index:number) => {
-                                    return (
-                                        <tr key={evnt.description}>
-                                            <td className='delete' onClick={() => confirmDeleteEvent(evnt.id, index)}>
-                                                <i className="fa fa-trash"></i>  
-                                            </td>
-                                            <td>
-                                                <div className='event-type'>
-                                                    <div className={`type-letter ${[1,3].includes(evnt.event_type) ? 'select' : ''}`}>ל</div>
-                                                    <div className={`type-letter ${[2,3].includes(evnt.event_type) ? 'select' : ''}`}>ע</div>
-                                                </div>
-                                            </td>
-                                            <td className='description'>
-                                                {evnt.description}
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                </div>
-
-                <div className='add-event'>
-                    <div className='options'>
-                        <b><label>סוג ארוע</label></b>
-                        <label htmlFor="kind1">
-                            <input type="radio" id="kind1" name="kind" value="personal" checked={saveKind == 'personal'} onChange={setEventKind} />
-                            אישי
-                        </label>
-                        <label htmlFor="kind2">
-                            <input type="radio" id="kind2" name="kind" value="general" checked={saveKind == 'general'} onChange={setEventKind} />
-                            כללי
-                        </label>
-                    </div>
-
-                    <div className='event-dates'>
-                        <div className='event-date'>
-                            <select ref={gregMonthSelect}>
-                                {
-                                    addEventSelects.greg_months.map((mData:any) => {
-                                        return <option key={mData.index} value={mData.index}>{mData.name}</option>
-                                    })
-                                }
-                            </select>
-                            <select ref={gregDaySelect}>
-                                {
-                                    addEventSelects.greg_days.map((d:number) => {
-                                        return <option key={d} value={d}>{d}</option>
-                                    })
-                                }
-                            </select>
+                        <div className='close'>
+                            <span onClick={() => {closeHandler()}}>X</span>
+                        </div>
+                        <div className='title'>
+                            <label>{dateParams.hTitle}</label>
+                            <label>{dateParams.gTitle}</label>
+                        </div>
+                        <div className="events-table">
+                            <table>
+                                <tbody>
+                                    {
+                                        events.map((evnt:any, index:number) => {
+                                            return (
+                                                <tr key={evnt.description}>
+                                                    <td className='delete' onClick={() => confirmDeleteEvent(evnt.id, index)}>
+                                                        <i className="fa fa-trash"></i>  
+                                                    </td>
+                                                    <td>
+                                                        <div className='event-type'>
+                                                            <div className={`type-letter ${[1,3].includes(evnt.event_type) ? 'select' : ''}`}>ל</div>
+                                                            <div className={`type-letter ${[2,3].includes(evnt.event_type) ? 'select' : ''}`}>ע</div>
+                                                        </div>
+                                                    </td>
+                                                    <td className='description'>
+                                                        {evnt.description}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </table>
                         </div>
 
-                        <div className='event-date'>
-                            <select ref={hebMonthSelect}>
-                                {
-                                    addEventSelects.heb_months.map((mData:any) => {
-                                        return <option key={mData.index} value={mData.index}>{mData.name}</option>
-                                    })
-                                }
-                            </select>
+                        <div className='add-event'>
+                            <div className='options'>
+                                <b><label>סוג ארוע</label></b>
+                                <label htmlFor="kind1">
+                                    <input type="radio" id="kind1" name="kind" value="personal" checked={saveKind == 'personal'} onChange={setEventKind} />
+                                    אישי
+                                </label>
+                                <label htmlFor="kind2">
+                                    <input type="radio" id="kind2" name="kind" value="general" checked={saveKind == 'general'} onChange={setEventKind} />
+                                    כללי
+                                </label>
+                            </div>
 
-                            <select ref={hebDaySelect}>
-                                {
-                                    addEventSelects.heb_days.map((dName:string, index:number) => {
-                                        return <option key={index} value={index+1}>{dName}</option>
-                                    })
-                                }
-                            </select>
+                            <div className='event-dates'>
+                                <div className='event-date'>
+                                    <select ref={gregMonthSelect}>
+                                        {
+                                            addEventSelects.greg_months.map((mData:any) => {
+                                                return <option key={mData.index} value={mData.index}>{mData.name}</option>
+                                            })
+                                        }
+                                    </select>
+                                    <select ref={gregDaySelect}>
+                                        {
+                                            addEventSelects.greg_days.map((d:number) => {
+                                                return <option key={d} value={d}>{d}</option>
+                                            })
+                                        }
+                                    </select>
+                                </div>
+
+                                <div className='event-date'>
+                                    <select ref={hebMonthSelect}>
+                                        {
+                                            addEventSelects.heb_months.map((mData:any) => {
+                                                return <option key={mData.index} value={mData.index}>{mData.name}</option>
+                                            })
+                                        }
+                                    </select>
+
+                                    <select ref={hebDaySelect}>
+                                        {
+                                            addEventSelects.heb_days.map((dName:string, index:number) => {
+                                                return <option key={index} value={index+1}>{dName}</option>
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className='options'>
+                                <b><label>שמור בתאריך</label></b>
+                                <label htmlFor="op1">
+                                    <input type="radio" id="op1" name="save" value="greg" checked={saveType == 'greg'}  onChange={setSaveEventType} />
+                                    לועזי
+                                </label>
+                                <label htmlFor="op2">
+                                    <input type="radio" id="op2" name="save" value="heb" checked={saveType == 'heb'} onChange={setSaveEventType} />
+                                    עברי
+                                </label>
+                                <label htmlFor="op3">
+                                    <input type="radio" id="op3" name="save" value="both" checked={saveType == 'both'} onChange={setSaveEventType} />
+                                    שניהם
+                                </label>
+                            </div>
+
+                            <div className='description'>
+                                <input type="text" value={eventDescription} onChange={updateNewEventDesc}/>
+                                <button type="button" onClick={addEvent}>הוספה</button>
+                            </div>
                         </div>
                     </div>
-
-                    <div className='options'>
-                        <b><label>שמור בתאריך</label></b>
-                        <label htmlFor="op1">
-                            <input type="radio" id="op1" name="save" value="greg" checked={saveType == 'greg'}  onChange={setSaveEventType} />
-                            לועזי
-                        </label>
-                        <label htmlFor="op2">
-                            <input type="radio" id="op2" name="save" value="heb" checked={saveType == 'heb'} onChange={setSaveEventType} />
-                            עברי
-                        </label>
-                        <label htmlFor="op3">
-                            <input type="radio" id="op3" name="save" value="both" checked={saveType == 'both'} onChange={setSaveEventType} />
-                            שניהם
-                        </label>
-                    </div>
-
-                    <div className='description'>
-                        <input type="text" value={eventDescription} onChange={updateNewEventDesc}/>
-                        <button type="button" onClick={addEvent}>הוספה</button>
-                    </div>
                 </div>
-            </div>
-        </div>
+            }
+        </>
     )
 }
 

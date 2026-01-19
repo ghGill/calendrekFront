@@ -251,9 +251,12 @@ function Month({ dbUsers }:monthParams) {
 
             {
                 ( showYearlyEvents != '') &&
-                <>
-                    <YearlyEvents eventsType={showYearlyEvents} closeHandler={setShowYearlyEvents}/>
-                </>
+                <YearlyEvents 
+                    eventsType={showYearlyEvents} 
+                    closeHandler={setShowYearlyEvents}
+                    refreshMonthPage={refreshMonthView}
+                >
+                </YearlyEvents>
             }
 
             <div className='month-container'>

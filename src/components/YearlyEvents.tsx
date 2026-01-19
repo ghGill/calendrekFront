@@ -1,18 +1,23 @@
 import './YearlyEvents.css'
 import api from '../api/api';
 import dm from '../dateUtils.ts'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useUserContext } from '../context/User.tsx';
+import Confirm from './Confirm.tsx'
 
 type yearlyEventsParams = {
     eventsType:string,
-    closeHandler:any
+    closeHandler:any,
+    refreshMonthPage:any,
 }
 
-function YearlyEvents({ eventsType, closeHandler }:yearlyEventsParams) {
+function YearlyEvents({ eventsType, closeHandler, refreshMonthPage }:yearlyEventsParams) {
     const [yearlyEventsHTML, setYearlyEventsHTML] = useState<any[]>([]);
 
     const { user } = useUserContext()!;
+
+    const [showConfirm, setShowConfirm] = useState(false);
+    const confirmParams = useRef<any>({});
 
     const loadEvents = async () => {
         const result:any = await api.getYearlyEvents({user_id:user?.id, type:eventsType});
@@ -28,6 +33,7 @@ function YearlyEvents({ eventsType, closeHandler }:yearlyEventsParams) {
 
             result.data.forEach((rec:any) => {
                 allMonthsData[rec.m].events.push({
+                    id:rec.id,
                     d:(eventsType == 'greg' ? rec.d : eventsData.heb_days[rec.d-1]), 
                     desc:rec.description
                 })
@@ -147,9 +153,48 @@ function YearlyEvents({ eventsType, closeHandler }:yearlyEventsParams) {
         };
     }
 
+    const confirmDeleteEvent = (id:number, mIndex:number, index:number) => {
+        confirmParams.current.id = id;
+        confirmParams.current.mIndex = mIndex;
+        confirmParams.current.index = index;
+        confirmParams.current.text = "האם למחוק את הארוע?";
+
+        setShowConfirm(true);
+    }
+
+    const deleteEvent = async (deleteEvent:boolean) => {
+        if (!deleteEvent) {
+            setShowConfirm(false);
+            return;
+        }
+
+        const result:any = await api.deleteEvent(confirmParams.current.id);
+
+        if (result.success) {
+            let eventsList = [...yearlyEventsHTML];
+            eventsList[confirmParams.current.mIndex].events.splice(confirmParams.current.index, 1);
+
+            setYearlyEventsHTML(eventsList);
+        }
+
+        setShowConfirm(false);
+
+        refreshMonthPage();
+    }
+
     return (
         <div className='yearly-wrapper'>
             <div className='yearly-bg'>
+
+                {
+                    showConfirm &&
+                    <Confirm 
+                        text={confirmParams.current.text}
+                        callback={deleteEvent}
+                    >
+                    </Confirm>
+                }
+
                 <div className='close' onClick={() => {closeHandler(false)}}>
                     X
                 </div>
@@ -158,7 +203,7 @@ function YearlyEvents({ eventsType, closeHandler }:yearlyEventsParams) {
                 </div>
                 <div className="events">
                     { 
-                        yearlyEventsHTML.map((mData:any) => {
+                        yearlyEventsHTML.map((mData:any, mIndex:number) => {
                             return (
                                 <div key={mData.name} className="month-events">
                                     <div className='month-name'>
@@ -172,6 +217,11 @@ function YearlyEvents({ eventsType, closeHandler }:yearlyEventsParams) {
                                                     <tr key={`${mData.name}-${index}`} className='event-desc'>
                                                         <td>{evnt.desc}</td>
                                                         <td>{evnt.d}</td>
+                                                        <td className='delete'
+                                                            onClick={() => confirmDeleteEvent(evnt.id, mIndex, index)}
+                                                        >
+                                                            <i className="fa fa-trash"></i>  
+                                                        </td>
                                                     </tr>
                                                 )
                                             })

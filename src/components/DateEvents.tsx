@@ -22,6 +22,7 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
     const hebMonthSelect = useRef<HTMLSelectElement>(null);
     const hebDaySelect = useRef<HTMLSelectElement>(null);
 
+    const [displayEvents, setDisplayEvents] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const confirmParams = useRef<any>({});
 
@@ -50,6 +51,10 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
 
         loadDateEvent(queryParams);
     }, []);
+
+    useEffect(() => {
+        setDisplayEvents(true);
+    }, [displayEvents]);
 
     const clearAddEvent = () => {
         setEventDescription('');
@@ -168,7 +173,7 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
     return (
         <>
             {
-                (events.length > 0) &&
+                displayEvents &&
                 <div className='events-wrapper'>
                     <div className="events-bg"></div>
                     <div className="events">

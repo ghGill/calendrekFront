@@ -211,11 +211,22 @@ function Month({ dbUsers }:monthParams) {
         setCurrentViewDate(d);
     }
 
-    const nextMonth = () => {
+    const nextMonth = async () => {
         var d:Date = new Date(currentYear.current, currentMonth.current, 1);
         d = dm.dateDaysDiff(d, -32);
         
         setCurrentViewDate(d);
+
+        // const result:any = await api.getUpdateHebEvents();
+        // result.data.forEach((rec:any) => {
+        //     const gregDate = new Date(Math.abs(rec.h_day), rec.g_month, rec.g_day)
+        //     const hebDate = dm.gregorianToHebrew(gregDate);
+        //     console.log(rec.description);
+        //     console.log(hebDate.nHebDay);
+        //     console.log(hebDate.nHebMonth);
+        //     console.log("==================");
+            
+        // })
     }
 
     const openDayEvents = (dbData:any) => {

@@ -176,4 +176,10 @@
     .month-header .title select option {
         font-size: 14px;
     }
+
+    .month-header .arrow {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
 }

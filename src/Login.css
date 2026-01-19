@@ -31,6 +31,7 @@
     padding:12px 12px;
     color:white;
     direction: rtl;
+    cursor: pointer;
 }
 
 .login-bg select:focus {

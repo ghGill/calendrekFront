@@ -74,19 +74,6 @@ class API_SERVICE {
         })
     }
 
-    async getUpdateHebEvents() {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const response = await this.createFetch('/event/update-heb', 'get');
-
-                resolve(response);
-            }
-            catch (e:unknown) {
-                reject({ success: false, message: (e as Error).message })
-            }
-        })
-    }
-
     async getMonthEvents(data:object) {
         return new Promise(async (resolve, reject) => {
             try {

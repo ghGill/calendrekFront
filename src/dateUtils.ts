@@ -76,6 +76,10 @@ class dateManager {
         return Object.keys(gregMonthNames);
     }
 
+    getHebMonthsList() {
+        return Object.keys(gregMonthNames).map((hName:string) => gregMonthNames[hName]);
+    }
+
     getAddEventDatesList() {
         let output:any = {greg_months:[], greg_days:[], heb_months:[], heb_days:[]};
 

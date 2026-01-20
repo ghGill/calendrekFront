@@ -232,7 +232,8 @@ function Month({ dbUsers }:monthParams) {
         setShowYearlyEvents(eventsType);
     }
 
-    const monthsNames = dm.getGregMonthsList();
+    const monthsNames = dm.getHebMonthsList();
+    
     const years = Array.from({ length: 80 }, (_, i) => 1960 + i);
     
     return (
@@ -266,24 +267,6 @@ function Month({ dbUsers }:monthParams) {
                     </div>
                     <div className='title'>
                         <select
-                            onChange={(e:any) => setCurrentMonth(monthsNames.indexOf(e.target.value), true)}
-                            value={currentMonthName.current}
-                        >
-                            {
-                                monthsNames.map((month) => {
-                                    return (
-                                        <option
-                                            key={month} 
-                                            value={month} 
-                                        >
-                                            {month}
-                                        </option>
-                                    )
-                                })
-                            }
-                        </select>
-
-                        <select
                             onChange={(e:any) => setCurrentYear(e.target.value, true)}
                             value={currentYear.current}
                         >
@@ -295,6 +278,24 @@ function Month({ dbUsers }:monthParams) {
                                             value={year} 
                                         >
                                             {year}
+                                        </option>
+                                    )
+                                })
+                            }
+                        </select>
+
+                        <select
+                            onChange={(e:any) => setCurrentMonth(monthsNames.indexOf(e.target.value), true)}
+                            value={currentMonthName.current}
+                        >
+                            {
+                                monthsNames.map((month) => {
+                                    return (
+                                        <option
+                                            key={month} 
+                                            value={month} 
+                                        >
+                                            {month}
                                         </option>
                                     )
                                 })

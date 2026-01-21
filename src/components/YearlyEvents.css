@@ -56,6 +56,7 @@
 }
 
 .yearly-bg .events .month-events {
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -72,11 +73,11 @@
     direction: rtl;
 }
 
-.yearly-bg .events table td:nth-child(3)  {
+.yearly-bg .events table  {
+    width:100%;
 }
 
 .yearly-bg .events table td:nth-child(2)  {
-    padding-left: 18px;
     padding-right: 18px;
     color: white;
 }
@@ -115,7 +116,7 @@
 
     .yearly-bg .events .event-desc {
         gap: 2px;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .yearly-bg .title {

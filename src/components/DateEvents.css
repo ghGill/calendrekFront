@@ -69,10 +69,28 @@
     overflow-y: auto;
 }
 
+.events-table table {
+    width:100%;
+    border-collapse: collapse;
+}
+
+.events-table table tr td:nth-child(1) {
+    width: 5%;
+}
+
+.events-table table tr td:nth-child(2) {
+    width: 10%;
+}
+
+.edit-mode {
+    background-color: rgb(145, 59, 140) !important;
+}
+
 .events-table table .description {
     padding-right: 12px;
     user-select: none;
     text-align: right;
+    cursor: pointer;
 }
 
 .events-table table .delete {

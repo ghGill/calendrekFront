@@ -113,6 +113,19 @@ class API_SERVICE {
         })
     }
 
+    async updateEvent(data:object) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response = await this.createFetch('/event/update', 'post', data);
+
+                resolve(response);
+            }
+            catch (e:unknown) {
+                reject({ success: false, message: (e as Error).message })
+            }
+        })
+    }
+
     async deleteEvent(eventId:number) {
         return new Promise(async (resolve, reject) => {
             try {

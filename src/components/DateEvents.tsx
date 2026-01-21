@@ -105,15 +105,12 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
                 saveParams.user_id = 0;
         }
 
-        let eventType:number = -1;
-
         switch(saveType) {
             case 'greg':
                 saveParams.g_day = Math.max(0, gregDaySelect);
                 saveParams.g_month = Math.max(0, gregMonthSelect);
                 saveParams.h_day = -1;
                 saveParams.h_month = -1;
-                eventType=1;
                 break;
 
             case 'heb':
@@ -121,7 +118,6 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
                 saveParams.h_month = Math.max(0, hebMonthSelect);
                 saveParams.g_day = -1;
                 saveParams.g_month = -1;
-                eventType=2;
                 break;
 
             case 'both':
@@ -129,7 +125,6 @@ function DateEvents({closeHandler, dateParams, refreshMonthPage}:dateEventsParam
                 saveParams.g_month = Math.max(0, gregMonthSelect);
                 saveParams.h_day = Math.max(0, hebDaySelect);
                 saveParams.h_month = Math.max(0, hebMonthSelect);
-                eventType=3;
                 break;
         }
 

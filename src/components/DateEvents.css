@@ -76,6 +76,7 @@
 
 .events-table table tr td:nth-child(1) {
     width: 5%;
+    padding-right: 4px;
 }
 
 .events-table table tr td:nth-child(2) {
@@ -83,7 +84,7 @@
 }
 
 .edit-mode {
-    background-color: rgb(145, 59, 140) !important;
+    background-color: rgb(125, 126, 55) !important;
 }
 
 .events-table table .description {
@@ -216,7 +217,6 @@
 
     .events-table table .description {    
         font-size: 14px;
-        /* white-space: normal; */
     }
 
     .event-date select {
@@ -225,6 +225,11 @@
 
     .event-date {
         gap: 4px;
+    }
+
+    .add-event .description input {
+        font-size: 14px;
+        line-height: 2rem;
     }
 }
 

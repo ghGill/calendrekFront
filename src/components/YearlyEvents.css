@@ -75,11 +75,17 @@
 
 .yearly-bg .events table  {
     width:100%;
+    border-collapse: collapse;
 }
 
 .yearly-bg .events table td:nth-child(2)  {
-    padding-right: 18px;
+    width:5%;
     color: white;
+    padding-right: 4px;
+}
+
+.yearly-bg .events table td:nth-child(3)  {
+    width:5%;
 }
 
 .yearly-bg .events .event-desc {
